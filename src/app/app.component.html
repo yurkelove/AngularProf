@@ -1,24 +1,9 @@
 <div class="container">
-  <h1>Angular Component</h1>
+  <h1>Directives</h1>
+  <p [appStyle]="'red'" fontWeight="bold" [dStyles]="{border: '1px solid red', borderRadius: '8px'}">Lorem*10 </p>
 
-  <app-post-form
-    (onAdd)="updatePosts($event)"
-  >
+  <p [appStyle]="'blue'" fontWeight="bold" [dStyles]="{border: '1px solid blue', borderRadius: '16px'}">Lorem*10 </p>
 
-  </app-post-form>
-
-  <hr>
-
-  <app-post
-    *ngFor="let p of posts"
-    [post]="p"
-  >
-    <div #info>
-      <small *ngIf="p.text.length > 10; else short">Пост длинный</small>
-      <ng-template #short>
-        <small>Пост короткий</small>
-      </ng-template>
-    </div>
-  </app-post>
+  <p [appStyle]="'blue'" fontWeight="bold" [dStyles]="{border: '1px solid blue', borderRadius: '16px'}">Lorem*10 </p>
 
 </div>
