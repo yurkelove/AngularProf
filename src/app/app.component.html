@@ -6,4 +6,21 @@
 
   <p [appStyle]="'blue'" fontWeight="bold" [dStyles]="{border: '1px solid blue', borderRadius: '16px'}">Lorem*10 </p>
 
+  <h2>Структурные дерективы</h2>
+  <button (click)="isVisible = !isVisible">Toggle</button>
+
+  <div *ngIf="isVisible" class="wrap">
+    <p>dadadaddddddddddddddddddd</p>
+  </div>
+
+<!--  Обертка -->
+<!--  <ng-template [ngIf]="isVisible">-->
+<!--    <div class="wrap">-->
+<!--      <p>dadadaddddddddddddddddddd</p>-->
+<!--    </div>-->
+<!--  </ng-template>-->
+
+  <div class="wrap" *appIfnot="!isVisible">
+    <p>Custom structure directives!</p>
+  </div>
 </div>
