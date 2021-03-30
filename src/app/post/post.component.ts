@@ -1,22 +1,33 @@
 import {
-  Component,
-  OnInit,
-  Input,
-  ElementRef,
-  ContentChild,
-  OnChanges,
-  SimpleChanges,
-  DoCheck,
+  AfterContentChecked,
   AfterContentInit,
-  AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, Output, EventEmitter
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChild,
+  DoCheck,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewEncapsulation
 } from '@angular/core';
 import {Post} from '../app.component';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  styleUrls: ['./post.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
+// changeDetection: ChangeDetectionStrategy.OnPush, - будет реагировать только на входные свойства, @Input
+
 export class PostComponent implements
   OnInit,
   OnChanges,
