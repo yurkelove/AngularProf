@@ -1,0 +1,13 @@
+<div class="card">
+  <h2>App Component Counter: {{appCounterService.counter}}</h2>
+
+  <button (click)="appCounterService.increase()">+</button>
+  <button (click)="appCounterService.decrease()">-</button>
+</div>
+
+<div class="card">
+  <h2>App Local Counter: {{localCliCounterService.counter}}</h2>
+
+  <button (click)="localCliCounterService.increase()">+</button>
+  <button (click)="localCliCounterService.decrease()">-</button>
+</div>

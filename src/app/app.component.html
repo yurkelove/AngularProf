@@ -1,3 +1,21 @@
-<div>
-  <h1>Empty component</h1>
+<div class="container">
+  <h1>Services</h1>
+
+  <div class="card">
+    <h2>App Counter: {{appCounterService.counter}}</h2>
+
+    <button (click)="appCounterService.increase()">+</button>
+    <button (click)="appCounterService.decrease()">-</button>
+  </div>
+
+  <div class="card">
+    <h2>App Local Counter: {{localCliCounterService.counter}}</h2>
+
+    <button (click)="localCliCounterService.increase()">+</button>
+    <button (click)="localCliCounterService.decrease()">-</button>
+  </div>
+
+  <hr>
+  <app-counter></app-counter>
+
 </div>
