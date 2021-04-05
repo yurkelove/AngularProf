@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs';
 
 export interface Post {
   title: string;
@@ -11,14 +12,50 @@ export interface Post {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
+  e: number = Math.E;
+  str: string = 'Hello world';
+  date: Date = new Date();
+  float: number = 0.42;
+
+  obj = {
+    a: 1,
+    b: {
+      c: 2,
+      d: {
+        e: 3,
+        f: 4
+      }
+    }
+  };
+
+  search:string = '';
+  searchField:string = 'title';
+
   posts: Post[] = [
-    {title: 'Хочу выучить Angular', text: 'Я все еще учу компоненты', id: 1},
-    {title: 'Cледующий блок', text: 'Будет про дерективы и про пайпы', id: 2},
-    {title: 'Хочу выучить Angular', text: 'Я все еще учу компоненты', id: 3}
+    {title: 'Beer', text: 'Самое лучшее пиво в мире'},
+    {title: 'Bread', text: 'Самое лучшей хлеб в мире'},
+    {title: 'Apple', text: 'Самые лучшии яблоки в мире'},
   ];
 
-  updatePosts(post: Post) {
-    this.posts.unshift(post);
+  addPost() {
+    this.posts.unshift({
+      title: 'Angular 9',
+      text: 'Learn Angular 9'
+    });
   }
+
+  //  Pipe async
+  p: Promise<string> = new Promise<string>(resolve => {
+    setTimeout(() => {
+      resolve('Promise resolve');
+    },4000);
+  });
+
+  datE$: Observable<Date> = new Observable(obs => {
+    setInterval(() => {
+      obs.next(new Date());
+    }, 1000);
+  });
 }
