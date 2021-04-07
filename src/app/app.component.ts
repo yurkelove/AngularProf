@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {delay} from 'rxjs/operators';
 import {Todo, TodoService} from './todo.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit {
   todoTitle = '';
 
   loading = false;
+  error = '';
 
   constructor(private todosService: TodoService) {
 
@@ -46,6 +48,8 @@ export class AppComponent implements OnInit {
       .subscribe(response => {
         this.todos = response;
         this.loading = false;
+      }, error => {
+          this.error = error.message;
       });
   }
 
@@ -58,6 +62,7 @@ export class AppComponent implements OnInit {
 
   completeTodo(id: number) {
     this.todosService.completeTodo(id).subscribe(todo => {
+      todo = JSON.parse(todo);
       this.todos.find(t => t.id === todo.id).completed = true;
     });
   }

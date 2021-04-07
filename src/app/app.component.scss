@@ -16,3 +16,9 @@
 .completed {
   text-decoration: line-through;
 }
+
+p {
+  &.error {
+    color: red;
+  }
+}
