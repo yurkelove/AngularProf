@@ -1,3 +1,14 @@
 <div>
-  <h1>Empty component</h1>
+  <h1>Animation</h1>
+
+  <div class="wrap">
+    <button (click)="animate()">animate</button>
+    <button (click)="boxState = 'special'">set special state</button>
+    <button (click)="visible = !visible">Toggle visibility</button>
+    <hr/>
+    <div class="box" [@box]="boxState" *ngIf="visible" (@box.start)="animationStarted($event)" (@box.done)="animationDone($event)">
+      <h4>{{boxState | uppercase }}</h4>
+    </div>
+
+  </div>
 </div>
