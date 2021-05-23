@@ -9,6 +9,9 @@
     <div class="box" [@box]="boxState" *ngIf="visible" (@box.start)="animationStarted($event)" (@box.done)="animationDone($event)">
       <h4>{{boxState | uppercase }}</h4>
     </div>
-
   </div>
+
+  <hr />
+  <hr />
+  <app-animate></app-animate>
 </div>
