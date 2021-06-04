@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Post} from '../../shared/interfaces';
 import {PostsService} from '../../shared/posts.service';
@@ -12,19 +12,20 @@ export class CreatePageComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private  postService: PostsService) { }
+  constructor(private postsService: PostsService) {
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
       title: new FormControl(null, Validators.required),
       text: new FormControl(null, Validators.required),
-      author: new FormControl(null, Validators.required),
-    });
+      author: new FormControl(null, Validators.required)
+    })
   }
 
   submit() {
     if (this.form.invalid) {
-      return ;
+      return
     }
 
     const post: Post = {
@@ -32,13 +33,11 @@ export class CreatePageComponent implements OnInit {
       author: this.form.value.author,
       text: this.form.value.text,
       date: new Date()
-    };
+    }
 
-    this.postService.crete(post).subscribe(() => {
-      this.form.reset();
-    });
-
-    console.log(post);
+    this.postsService.create(post).subscribe(() => {
+      this.form.reset()
+    })
   }
 
 }
